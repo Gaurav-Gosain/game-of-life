@@ -13,6 +13,8 @@
 
 A console-based implementation of Conway's Game of Life, written in Go.
 
+https://github.com/Gaurav-Gosain/game-of-life/assets/55647468/a0dfc70c-9a11-4df9-ae25-d8d7cc172e58
+
 ## **About**
 
 The Game of Life is a famous example of a cellular automaton, created by John
