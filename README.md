@@ -46,6 +46,8 @@ go run main.go
   cursor position.
 - Use the `?` key to toggle the help overlay.
 - Use the mouse to select a cell and toggle its state.
+  - Left-click will set the state of a cell to `alive`.
+  - Right-click will set the state of a cell to `dead`.
 
 > [!NOTE]
 > Also supports the arrow keys and vim-like movement keys.
