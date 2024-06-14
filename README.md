@@ -32,7 +32,12 @@ environment using the Go programming language.
 
 ## **Usage**
 
-- Run the program by executing `main.go` using Go's built-in compiler.
+- Start the program by running [`main.go`](main.go) using Go.
+
+```sh
+go run main.go
+```
+
 - The game will start in paused mode, allowing you to explore the initial
   state of the grid.
 - Use the `p` key to pause or resume the simulation.
@@ -40,12 +45,10 @@ environment using the Go programming language.
 - Use the `t` key or `space` to toggle the state of the cell at the current
   cursor position.
 - Use the `?` key to toggle the help overlay.
+- Use the mouse to select a cell and toggle its state.
 
 > [!NOTE]
 > Also supports the arrow keys and vim-like movement keys.
-
-- Use the `t` key to toggle the cell at the current cursor position.
-- Use the mouse to select a cell and toggle its state.
 
 ## **Requirements**
 
