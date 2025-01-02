@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	tea "github.com/charmbracelet/bubbletea"
+	tea "github.com/charmbracelet/bubbletea/v2"
 	"github.com/charmbracelet/lipgloss"
 )
 
@@ -85,8 +85,8 @@ func (m *model) nextState() {
 	m.cells = newCells
 }
 
-func (m model) Init() tea.Cmd {
-	return tickCmd()
+func (m model) Init() (tea.Model, tea.Cmd) {
+	return m, tickCmd()
 }
 
 func (m model) isInitialized() bool {
@@ -154,15 +154,15 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 		m.selected = cell{col: m.width / 2, row: m.height / 2}
 	case tea.MouseMsg:
-		mouseButton := tea.MouseEvent(msg).Button
-		isLeftClick := mouseButton == tea.MouseButtonLeft
-		isRightClick := mouseButton == tea.MouseButtonRight
+		mouseButton := tea.MouseButton(msg.Mouse().Button)
+		isLeftClick := mouseButton == tea.MouseLeft
+		isRightClick := mouseButton == tea.MouseRight
 
 		if !isLeftClick && !isRightClick {
 			return m, nil
 		}
 
-		x, y := msg.X, msg.Y
+		x, y := msg.Mouse().X, msg.Mouse().Y
 
 		col := x / 2
 		row := y
@@ -290,7 +290,12 @@ func tickCmd() tea.Cmd {
 func main() {
 	m := &model{}
 
-	p := tea.NewProgram(m, tea.WithAltScreen(), tea.WithMouseCellMotion())
+	p := tea.NewProgram(
+		m,
+		tea.WithAltScreen(),
+		tea.WithMouseCellMotion(),
+		tea.WithFerociousRenderer(),
+	)
 
 	if _, err := p.Run(); err != nil {
 		fmt.Println("Error running program:", err)
